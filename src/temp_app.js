@@ -10,11 +10,9 @@ app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
-const accountData = fs.readFileSync("./src/json/accounts.json", {
-  encoding: "utf8",
-  flag: "r",
-});
-const accounts = JSON.parse(accountData);
+const accountData = JSON.parse(
+  fs.readFileSync("./json/accounts.json", { encoding: "utf8", flag: "r" })
+);
 app.get("/", (req, res) => res.render("index", { title: "Index" }));
 
-app.listen(3000, () => console.log("PS Project run on port 3000"));
+app.listen(3000);
